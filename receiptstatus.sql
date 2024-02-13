@@ -2,8 +2,8 @@
 When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?*/
 
 SELECT rewardsReceiptStatus
-  , AVG(totalSpent) as average_receipt_spend
-  , AVG(purchasedItemCount) as total_number_items_purchased --I can see interpretations to use a SUM here (comparing total items of each_ but the business question seems more geared towards identifying trends in fraudulent receipts to better to understand average across all receipts
+  , AVG(total_spent) as average_receipt_spend
+  , AVG(purchased_item_count) as total_number_items_purchased --I can see interpretations to use a SUM here (comparing total items of each_ but the business question seems more geared towards identifying trends in fraudulent receipts to better to understand average across all receipts
 FROM
 receipts
 WHERE
