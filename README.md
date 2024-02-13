@@ -34,5 +34,7 @@ Some general notes
 + Some other areas interesting to explore here are how the user attributes match to what is expected and monitoring that rejected receipts have the correct flow for points collection
 
 ## Fourth: Communicate with Stakeholders
-+ I'm most familiar with Looker so 
+I'm going to list my sample email below
+
+Hello! I'm reaching out to learn a little bit more about how point totals are calculated for receipts. I noticed in a data monitor that we have instances where the sum of points for all items on a receipt don't match what the receipt lists as the point total. There are also some instances where we don't have points associated to items at all so I want to confirm flow for each of our use cases to ensure we are capturing all totals correctly and providing all correct information back to our brand partners. It'd also be valuable to get similar context for the bonus point structure to make sure we have robust monitors in place for each step and use case in this calculation.
 
