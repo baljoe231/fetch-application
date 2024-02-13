@@ -28,13 +28,13 @@ ORDER BY brand_name
   
 SELECT brand_name
 , receipt_count as receipt_scans_most_recent_month
-,receipt_scans_previous_month 
+, receipt_scans_previous_month 
 FROM 
 month_totals
 WHERE
 scanned_month = TO_CHAR(CURRENT_DATE - interval '1 month', 'YYYY-MM') 
-/*Assumption- I'm interpreting "most recent" as the last full month prior to the current month vs the current month. 
-If that is incorrect, I included a commented line showing a version where current month would be included*/
+/*Assumption- I'm interpreting "most recent" as the last full month prior to the current month vs the current month which is a partial. 
+If that is incorrect, I included a commented line showing a version that would use current month*/
 -- scanned_month = TO_CHAR(CURRENT_DATE, 'YYYY-MM') 
 ORDER BY 
 receipt_count DESC 
