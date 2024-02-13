@@ -10,7 +10,7 @@ FROM
 users 
 JOIN receipts on receipts.user_id = users.id
 JOIN receipt_line_items on receipt_line_items.receipt_id = receipts.id 
--- Noted it elsewhere as well but assumption is that for brand analytics we don't care about instances where a receipt doesn't have an associated brand so I don't use LEFT JOIN here
+/*Noted it elsewhere as well but assumption is that for brand analytics we don't care about instances where a receipt doesn't have an associated brand so I don't use LEFT JOIN here*/
 JOIN cpg on cpg.id = receipt_line_items.rewards_product_partner_id  
 JOIN brands on brands.id = cpg.brand_id
 WHERE
