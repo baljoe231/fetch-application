@@ -2,7 +2,7 @@
 
 ## First: Review Existing Unstructured Data and Diagram a New Structured Relational Data Model
 I made an entity relationship in Miro to visualize a proposed relational db. 
-<img width="1190" alt="Screenshot 2024-02-12 at 10 03 45 PM" src="https://github.com/baljoe231/fetch-application/assets/39926481/64687f57-4444-4d1c-ae48-2fc56ed5521b">
+<img width="1190" alt="Screenshot 2024-02-13 at 12 08 24 AM" src="https://github.com/baljoe231/fetch-application/assets/39926481/9a3d12a8-16af-4bcf-81c8-507b8bf070c1">
 Some general notes 
 + In a perfect world, I would have liked to extract receipts.json using something like the snippet below in python (jupyter notebook) to extract all of the keys to ensure I was capturing all data but I got stuck at an Extra data error since this is multiple jsons and not a sinle json. 
   > with open("receipts.json") as file:
