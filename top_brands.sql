@@ -32,10 +32,10 @@ SELECT brand_name
 FROM 
 month_totals
 WHERE
-scanned_month = TO_CHAR(NOW() - interval '1 month', 'YYYY-MM') 
+scanned_month = TO_CHAR(CURRENT_DATE - interval '1 month', 'YYYY-MM') 
 /*Assumption- I'm interpreting "most recent" as the last full month prior to the current month vs the current month. 
 If that is incorrect, I included a commented line showing a version where current month would be included*/
--- scanned_month = TO_CHAR(NOW(), 'YYYY-MM-DD') 
+-- scanned_month = TO_CHAR(CURRENT_DATE, 'YYYY-MM') 
 ORDER BY 
 receipt_count DESC 
 LIMIT 5
