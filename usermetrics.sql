@@ -8,13 +8,13 @@ SELECT brands.name
   , COUNT(DISTINCT receipt_line_items.id) as number_items_submitted
 FROM
 users 
-JOIN receipts on receipts.userID = users.id
+JOIN receipts on receipts.user_id = users.id
 JOIN receipt_line_items on receipt_line_items.receipt_id = receipts.id 
---Noted it elsewhere as well but assumption is that for brand analytics we don't care about instances where a receipt doesn't have an associated brand so I don't use LEFT JOIN here
-JOIN cpg on cpg.id = receipt_line_items.rewardsProductPartnerId  
+-- Noted it elsewhere as well but assumption is that for brand analytics we don't care about instances where a receipt doesn't have an associated brand so I don't use LEFT JOIN here
+JOIN cpg on cpg.id = receipt_line_items.rewards_product_partner_id  
 JOIN brands on brands.id = cpg.brand_id
 WHERE
-users.createdDate > CURRENT_DATE - INTERVAL '6 months'
+users.created_date > CURRENT_DATE - INTERVAL '6 months'
 ORDER BY 
   2 DESC --First question
   -- 3 DESC Second question
