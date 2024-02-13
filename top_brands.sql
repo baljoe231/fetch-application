@@ -4,7 +4,7 @@ How does the ranking of the top 5 brands by receipts scanned for the recent mont
 
 with receipt_counts as (
   SELECT 
-  TO_CHAR(receipts.datescanned, 'YYYY-MM') as scanned_month
+  TO_CHAR(receipts.date_scanned, 'YYYY-MM') as scanned_month
   , brands.name as brand_name
   , COUNT(DISTINCT receipts.id) as receipt_count
   FROM 
@@ -12,7 +12,7 @@ with receipt_counts as (
   JOIN receipt_line_items on receipts.id = receipt_line_items.receipt_id
   /*Assumption- receipts that do not have receipt_line_items with associated rewardsProductPartnerId are not needed because those receipts are not associated with a partner brand. 
   If that assumption is incorrect, a left join could be swapped in to allow you to see the receipt count for a NULL brand. I've defaulted to not having it for performance*/
-  JOIN cpg on receipt_line_items.rewardsProductPartnerId = cpg.id
+  JOIN cpg on receipt_line_items.rewards_product_partner_id = cpg.id
   JOIN brands on brands.id = cpg.brand_id
   GROUP BY 1, 2
 )
