@@ -5,17 +5,21 @@ I made an entity relationship in Miro to visualize a proposed relational db.
 <img width="1190" alt="Screenshot 2024-02-13 at 12 08 24 AM" src="https://github.com/baljoe231/fetch-application/assets/39926481/9a3d12a8-16af-4bcf-81c8-507b8bf070c1">
 Some general notes 
 + In a perfect world, I would have liked to extract receipts.json using something like the snippet below in python (jupyter notebook) to extract all of the keys to ensure I was capturing all data but I got stuck at an Extra data error since this is multiple jsons and not a single json. 
-  > with open("receipts.json") as file:
-  > data = json.load(file)
-  >keys = data.keys()
-  >for i in data: print(i.keys())
+  ```
+  with open("receipts.json") as file:
+        data = json.load(file)
+        keys = data.keys()
+        for i in data: print(i.keys())
+  ```
 + I was able to use the below snippet to get everything into a list but then was spending too much time trying to navigate back to a dict type so I could use .keys. I wanted to hold true to the few hours for the assignment as much as possible but with more time, I probably would have done more research on latest python packages to see if they have better ways of handling these multiple jsons. Given the questions that followed, I didn't think identifying every potential datapoint was absolutely essential for this assignment
-  > import json
-  > data = []
-  > with open("receipts.json") as f:
-  > for line in f:
-        > data.append(json.loads(line))
-  > print(data)
+```
+  import json
+  data = []
+  with open("receipts.json") as f:
+    for line in f:
+    data.append(json.loads(line))
+    print(data)
+```
 + Outside of mapping the 3 files provided at the start to their own corresponding tables I also decided to
   * Make a receipt_line_items table that would be a unique row for each receipt + SKU combo to make this a clean table to investigate
   * As a note, there were a lot of different use cases represented in the line items- user flagged attributes, needing a review, attribution related fields. In a full data warehouse, it would probably be valuable at a model layer to break these up for end users but I didn't think that was necessary here so left it in one table 
