@@ -1,7 +1,5 @@
 /*When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
 When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?*/
-/*Which brand has the most spend among users who were created within the past 6 months?
-Which brand has the most transactions among users who were created within the past 6 months?*/
 
 SELECT rewardsReceiptStatus
   , AVG(totalSpent) as average_receipt_spend
