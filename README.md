@@ -24,8 +24,8 @@ Some general notes
   * Make a receipt_line_items table that would be a unique row for each receipt + SKU combo to make this a clean table to investigate
   * As a note, there were a lot of different use cases represented in the line items- user flagged attributes, needing a review, attribution related fields. In a full data warehouse, it would probably be valuable at a model layer to break these up for end users but I didn't think that was necessary here so left it in one table 
   * Reviewing the data, I saw the way to connect brands to receipts was via the receipt_line_items (makes sense, 1 receipt could have multiple brands) to a nested cpg value in brands. Given the nesting style, I opted for a separate table in case there could ever be multiple values here
-  * Both rewards_product_partner_id and points_payer_id will join with the cpg brand process outlined above but you'll see me use rewards_product_partner_id as the reference because it has a higher availablity (I believe points_payer_id is a subcase of the overall brand association)
-  * I saw a few other opportunities for additional tables (earned reasons seem to have scheduleds that should connect to a schedule table) but left them off to keep this cleanish
+  * Both rewards_product_partner_id and points_payer_id will join with the cpg brand process outlined above but you'll see me use rewards_product_partner_id as the key because it has a higher availablity (I believe points_payer_id is a subcase of the overall brand association)
+  * I saw a few other opportunities for additional tables (ex:earned reasons seem to have schedules that should connect to a schedule table) but left them off to keep this cleanish
  
 ## Second: Write a query that directly answers a predetermined question from a business stakeholder
 + I used Postgres SQL to answer all questions
@@ -36,10 +36,10 @@ Some general notes
  
 ## Third: Evaluate Data Quality Issues in the Data Provided
 + The most obvious one that jumped out to me was identifying any instances where the total attributes on the receipts (purchased items, total amount, earned points) would ever not match what you would get when summing the line items. You can see a sample monitor in qachecks.
-+ Some other areas interesting to explore here are how the user attributes match to what is expected and monitoring that rejected receipts have the correct flow for points collection
++ Some other areas interesting to explore here are how the user attributes match to what is expected, monitoring that rejected receipts have the correct flow for points collection, and determination if the receipt_line_items had values for the necessary fields based on use case (ex: target_price wasn't always available, what scenarios do we expect for it to be missing and what scenarios should it be present).
 
 ## Fourth: Communicate with Stakeholders
 I'm going to list my sample email below
 
-Hello! I'm reaching out to learn a little bit more about how point totals are calculated for receipts. I noticed in a data monitor that we have instances where the sum of points for all items on a receipt don't match what the receipt lists as the point total. There are also some instances where we don't have points associated to items at all so I want to confirm flow for each of our use cases to ensure we are capturing all totals correctly and providing all correct information back to our brand partners. It'd also be valuable to get similar context for the bonus point structure to make sure we have robust monitors in place for each step and use case in this calculation.
+Hello! I'm reaching out to learn a little bit more about how point totals are calculated for receipts. I noticed in a data monitor that we have instances where the sum of points for all items on a receipt don't match what the receipt lists as the point total. There are also some instances where we don't have points associated to items at all so I want to confirm flow for each of our use cases to ensure we are capturing all totals correctly and providing all correct information back to our brand partners. It'd also be valuable to get similar context for the bonus point structure to make sure we have robust monitors in place for each step and use case in this calculation. Thank you!
 
