@@ -30,4 +30,9 @@ Some general notes
   * usermetrics the final 2
  
 ## Third: Evaluate Data Quality Issues in the Data Provided
++ The most obvious one that jumped out to me was identifying any instances where the total attributes on the receipts (purchased items, total amount) would ever not match what you would get when summing the line items
++ Some other areas interesting to explore here are how the user attributes match to what is expected and monitoring that rejected receipts have the correct flow for points collection
+
+## Fourth: Communicate with Stakeholders
++ I'm most familiar with Looker so 
 
